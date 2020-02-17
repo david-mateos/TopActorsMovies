@@ -1,8 +1,6 @@
-
 library(jsonlite)
 library(httr)
 library(tidyverse)
-library(highcharter) 
 library(stringr)
 
 ## get API key @ www.omdbapi.com/apikey.aspx* ##
@@ -30,10 +28,10 @@ get_show <- function(imdb_id){
 # Download @ https://datasets.imdbws.com/  
 imdb_data <- as_tibble(read.table(file = 'title.ratings.tsv', sep = '\t', header = TRUE))
 imdb_data <- imdb_data %>%
-  filter(averageRating >= 7) %>%  # only keep ids with a 7+ rating
-  filter(numVotes >= 150000) %>%  # and 250k votes
-  select(tconst) %>%
-  rename(id = tconst)
+              filter(averageRating >= 7) %>%  # only keep ids with a 7+ rating
+              filter(numVotes >= 150000) %>%  # and 250k votes
+              select(tconst) %>%
+              rename(id = tconst)
 
 ## See if it's a movie or series ID since both have different response 
 ## structures and sizes. Append the type to the tible with ids  
@@ -115,4 +113,4 @@ movies_with_top_actors <- movie_data %>%
 #### There are 151 films with these actors ###
 
 # View(movies_with_top_actors) 
-# write.csv(movies_with_top_actors, file= "moviesToWatch1.csv") #Export it!
+# write.csv(movies_with_top_actors, file= "moviesToWatch1.csv")  #Export it!
