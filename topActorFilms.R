@@ -80,10 +80,10 @@ while(is.na(movie_data$id[i]) == F){
 
 movie_data <- as_tibble(do.call("rbind", results))
 movie_data <- movie_data %>%
-  mutate(Year = as.numeric(Year)) %>%
-  mutate(Released = parse_date_time(Released, orders = c("dmy"))) %>%
-  mutate(imdbVotes = as.numeric(gsub(",", "", imdbVotes, fixed = T))) %>%
-  mutate(Runtime = as.numeric(gsub(" min", "", Runtime, fixed = T)))
+                mutate(Year = as.numeric(Year)) %>%
+                mutate(Released = parse_date_time(Released, orders = c("dmy"))) %>%
+                mutate(imdbVotes = as.numeric(gsub(",", "", imdbVotes, fixed = T))) %>%
+                mutate(Runtime = as.numeric(gsub(" min", "", Runtime, fixed = T)))
 
 #View(movie_data) # see the complete dataset here
 
@@ -103,14 +103,14 @@ top_actors<- as_tibble(table(all_actors)) %>%
                   top_n(10) %>% 
                   select(all_actors)
 
-## S3: filter the bigger dataset for movies with the Top 10 Actors:
+## S3: filter the parent dataset for movies with the Top 10 Actors:
 movies_with_top_actors <- movie_data %>% 
                             filter(str_detect(Actors, 
                                                 paste(top_actors$all_actors, collapse = "|"))) %>%
                             select(Title, Year, Genre, Plot, Actors, imdbRating) %>%
                             arrange(desc(imdbRating)) # sort by rating
 
-#### There are 151 films with these actors ###
+#### There are 151 films with these actors ####
 
 # View(movies_with_top_actors) 
 # write.csv(movies_with_top_actors, file= "movies_with_top_actors_result.csv") #Export it!
