@@ -5,6 +5,6 @@ Using the Open Movie Database API (OMDB) and data from the Independent Movie Dat
 
 A "Successful Film" in this excercise is defined by a film that has achieved a 7.0 average user rating on IMDB on at least 150k ratings. 
 
-A "Successful Actor" in this excercise is defined by having the most total appearances in Successful Films 
+A "Successful Actor" in this excercise is defined by top 10 actors that have had the most total appearances in Successful Films 
 
-get OMDB API key @ www.omdbapi.com/apikey.aspx 
+Get OMDB API key @ www.omdbapi.com/apikey.aspx 
