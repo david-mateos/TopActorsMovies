@@ -108,9 +108,9 @@ movies_with_top_actors <- movie_data %>%
                             filter(str_detect(Actors, 
                                                 paste(top_actors$all_actors, collapse = "|"))) %>%
                             select(Title, Year, Genre, Plot, Actors, imdbRating) %>%
-                            arrange(desc(imdbRating))
+                            arrange(desc(imdbRating)) # sort by rating
 
 #### There are 151 films with these actors ###
 
 # View(movies_with_top_actors) 
-# write.csv(movies_with_top_actors, file= "moviesToWatch1.csv")  #Export it!
+# write.csv(movies_with_top_actors, file= "movies_with_top_actors_result.csv") #Export it!
