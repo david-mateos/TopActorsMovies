@@ -28,8 +28,8 @@ get_show <- function(imdb_id){
 # Download @ https://datasets.imdbws.com/  
 imdb_data <- as_tibble(read.table(file = 'title.ratings.tsv', sep = '\t', header = TRUE))
 imdb_data <- imdb_data %>%
-              filter(averageRating >= 7) %>%  # only keep ids with a 7+ rating
-              filter(numVotes >= 150000) %>%  # and 250k votes
+              filter(numVotes >= 150000) %>%  # only keep ids with at least 150K votes
+              filter(averageRating >= 7) %>%  # and a 7+ rating
               select(tconst) %>%
               rename(id = tconst)
 
